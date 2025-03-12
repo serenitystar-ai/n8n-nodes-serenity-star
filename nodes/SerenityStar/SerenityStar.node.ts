@@ -7,7 +7,7 @@ export class SerenityStar extends VersionedNodeType {
 			displayName: 'Serenity* Star',
 			subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
 			name: 'serenityStar',
-			icon: 'file:../serenity-logo.svg',
+			icon: 'file:serenity-logo.svg',
 			group: ['transform'],
 			version: 1,
 			description: 'Work with Serenity* Star platform',

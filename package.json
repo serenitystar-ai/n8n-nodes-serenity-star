@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-serenity-star",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Custom n8n nodes by Serenity* Star",
   "keywords": [
     "n8n-community-node-package"
