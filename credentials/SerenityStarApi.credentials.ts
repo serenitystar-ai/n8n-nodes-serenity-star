@@ -18,7 +18,7 @@ export class SerenityStarApi implements ICredentialType {
 		type: 'generic',
 		properties: {
 			headers: {
-				"X-API-KEY": '={{$credentials.apiKey}}',
+				'X-API-KEY': '={{$credentials.apiKey}}',
 			},
 		},
 	};
