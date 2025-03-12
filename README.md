@@ -1,3 +1,5 @@
+![Serenity* Star - n8n node](https://github.com/serenitystar-ai/n8n-nodes-serenity-star/blob/main/banner.png?raw=true)
+
 # n8n-nodes-serenity-star
 
 This is an n8n community node. It lets you use the Serenity* Star platform in your n8n workflows.
