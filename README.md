@@ -1,46 +1,88 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# n8n-nodes-serenity-star
 
-# n8n-nodes-starter
+This is an n8n community node. It lets you use the Serenity* Star platform in your n8n workflows.
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
+Serenity* Star is a platform that enables AI-powered agents to automate tasks and conversations.
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
-## Prerequisites
+[Installation](#installation)  
+[Operations](#operations)  
+[Credentials](#credentials)  
+[Compatibility](#compatibility)  
+[Usage](#usage)  
+[Resources](#resources)  
+[Version history](#version-history)  
 
-You need the following installed on your development machine:
+## Installation
 
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 18. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  pnpm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
-## Using this starter
+## Operations
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+The Serenity* Star node currently supports the following operations:
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `pnpm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `pnpm lint` to check for errors or `pnpm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+### Activity Agent
+- **Execute**: Executes an activity-related task.
 
-## More information
+### Assistant Agent
+- **Execute**: Executes an assistant-related task.
+- **Create Conversation**: Creates a new conversation.
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+## Credentials
 
-## License
+To use the Serenity* Star node, you need to set up authentication by creating a credential in n8n.
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+1. Navigate to the **Credentials** section in n8n.
+2. Add a new credential for **Serenity* Star API**.
+3. Provide your API key and save the credential.
+
+## Compatibility
+
+This node is compatible with n8n version 0.200.0 and later.
+
+## Usage
+
+Each operation has required and optional fields to customize the request.
+
+### Required Fields
+These fields are common across multiple operations:
+
+#### For `Create Conversation`:
+- **Agent Code**: Identifier for the AI agent.
+- **Chat ID**: Unique identifier for the chat session (required for `Create Conversation`).
+- **Message**: The input message to be processed by the AI agent (required for `Create Conversation`).
+
+#### For `Execute`:
+- **Agent Code**: Identifier for the AI agent.
+
+### Optional Fields
+Additional optional fields can be included based on the operation:
+
+#### For `Create Conversation`:
+- **Agent Version**: Specifies the version of the AI agent.
+- **Base URL**: Allows overriding the default API base URL.
+- **Input Parameters**: Key-value pairs to customize the AI agent's response.
+- **User Identifier**: Unique identifier for the user interacting with the agent.
+
+#### For `Execute`:
+- **Agent Version**: Specifies the version of the AI agent.
+- **Base URL**: Allows overriding the default API base URL.
+- **Input Parameters**: Key-value pairs to customize the AI agent's execution.
+
+## Self-Hosting Configuration
+
+If you are self-hosting the Serenity* Star platform, you need to provide the `baseURL` for your instance:
+
+1. The default baseURL is `api.serenitystar.ai/api/v2/`
+2. You can override this by providing your own baseURL in the **Base URL** field available in all operations
+3. Make sure to include the complete path including any API version prefixes
+
+## Resources
+
+* [Serenity* Star API Documentation](https://docs.serenitystar.ai/docs/api/aihub/serenity-star-api-docs)
+* [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+
+## Version history
+
+- **v1.0.0**: Initial release, supports Activity and Assistant agent operations.
