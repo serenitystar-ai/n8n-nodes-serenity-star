@@ -109,7 +109,6 @@ const messageField: INodeProperties = {
 	displayName: 'Message',
 	name: 'message',
 	type: 'string',
-	required: true,
 	description: 'The message to send to the chat',
 	default: '',
 	displayOptions: {

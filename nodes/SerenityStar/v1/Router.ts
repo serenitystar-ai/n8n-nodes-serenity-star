@@ -125,14 +125,27 @@ export class Router {
 		);
 
 		const operation = this.executeFunctions.getNodeParameter('operation', i) as string;
-		if (operation === Operations.Execute) {
+		const resource = this.executeFunctions.getNodeParameter('resource', i) as string;
+
+		if (operation === Operations.Execute && resource === Resources.AssistantAgent) {
+			const message = executeFunctions.getNodeParameter('message', i) as string;
+			const chatId = executeFunctions.getNodeParameter('chatId', i) as string;
+
+			if (!message) {
+				throw new NodeOperationError(this.executeFunctions.getNode(), `Message is required`);
+			}
+
+			if (!chatId) {
+				throw new NodeOperationError(this.executeFunctions.getNode(), `Chat ID is required`);
+			}
+
 			body.push({
 				Key: 'message',
-				Value: executeFunctions.getNodeParameter('message', i) as string,
+				Value: message,
 			});
 			body.push({
 				Key: 'chatId',
-				Value: executeFunctions.getNodeParameter('chatId', i) as string,
+				Value: chatId,
 			});
 		}
 
